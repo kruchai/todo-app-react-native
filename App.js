@@ -9,7 +9,6 @@ export default function App() {
       <View style={styles.container}>
         <Header />
         <ToDo />
-        <Text style={styles.text}>{ 'It works' }</Text>
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
@@ -25,13 +24,5 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? 25 : 0,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  text: {
-    flex: 1,
-    width: '100%',
-    textAlign: 'center',
-    backgroundColor: '#e9e9e9',
-    color: Platform.OS !== 'ios' ? 'red' : 'green',
-  }
 });
