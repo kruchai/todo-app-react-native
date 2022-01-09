@@ -4,11 +4,23 @@ import { Header } from './components/Header'
 import { ToDo } from './components/ToDo'
 
 export default function App() {
+  const [todos, setTodos] = useState()
+
+  const addTodo = title => {
+    setTodos(previousTodo => [
+      {
+        id: Date.now().toString(),
+        title
+      },
+      ...previousTodo
+    ])
+  }
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Header />
-        <ToDo />
+        <ToDo onSubmit={addTodo} />
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
