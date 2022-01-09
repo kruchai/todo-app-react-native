@@ -1,10 +1,17 @@
+import React, {useState} from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { Platform, StyleSheet, SafeAreaView, Text, View } from 'react-native'
 import { Header } from './components/Header'
-import { ToDo } from './components/ToDo'
+import { AddTodo } from './components/AddTodo'
+import { TodoList } from './components/TodoList'
 
 export default function App() {
-  const [todos, setTodos] = useState()
+  const [todos, setTodos] = useState([
+    { id: 1, title: 'xxx'},
+    { id: 2, title: 'xxx'},
+    { id: 3, title: 'xxx'},
+    { id: 4, title: 'xxx'},
+  ])
 
   const addTodo = title => {
     setTodos(previousTodo => [
@@ -20,7 +27,16 @@ export default function App() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Header />
-        <ToDo onSubmit={addTodo} />
+        <AddTodo onSubmit={addTodo} />
+
+        <View>
+          {todos.map(todo => {
+            return (
+              // <TodoList title={todo.title} key={todo.id} />
+              <Text key={todo.id}>{todo.title}</Text>
+            )
+          })}
+        </View>
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
