@@ -1,5 +1,5 @@
 import React from 'react'
-import {Dimensions, StyleSheet, View, Text, TextInput, Button, Platform} from 'react-native'
+import {Dimensions, StyleSheet, View, Text, TextInput, TouchableOpacity, Platform} from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -8,7 +8,9 @@ export const ToDo = props => {
   return (
     <View style={styles.todoWrapper}>
       <TextInput style={styles.input} />
-      <Button style={styles.cta} color='#f194ff' title='+' />
+      <TouchableOpacity style={styles.cta}>
+        <Text style={styles.ctaText}>{'+'}</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -16,25 +18,27 @@ export const ToDo = props => {
 const styles = StyleSheet.create({
   todoWrapper: {
     flexDirection: 'row',
-    borderWidth: 1,
-    borderRadius: 12,
+    justifyContent: 'space-between',
     padding: 15,
-    borderStyle: 'dotted',
-    borderColor: 'green',
     width: '100%',
   },
   input: {
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: '#eee',
-    width: screenWidth - 30 - 100,
+    width: screenWidth - 30 - 50 - 10,
+    borderRadius: 12,
   },
   cta: {
-    width: 100,
+    width: 50,
+    height: 50,
     backgroundColor: 'green',
     color: '#fff',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: 'red',
+    borderColor: 'green',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
   }
 })
