@@ -31,10 +31,11 @@ export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Header />
-        <AddTodo addHandler={addTodo} />
-
-        <View>
+        <View style={styles.headerWrapper}>
+          <Header />
+          <AddTodo addHandler={addTodo} />
+        </View>
+        <View style={styles.mainWrapper}>
           <FlatList data={todos} renderItem={({ item }) => (
             <ListItem item={item} deleteHandler={deleteTodo} />
           )} />
@@ -54,4 +55,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
   },
+  headerWrapper: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainWrapper: {
+    width: '100%',
+  }
 });
