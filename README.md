@@ -4,7 +4,7 @@ Test project for getting the invitation to T / JL companies
 
 ||
 |---|
-|<img alt="GitHub package.json version (branch)" src="https://img.shields.io/github/package-json/v/olegscout/olegkruchay-vue/dev?label=Beta&style=flat-square"> |
+|<img alt="GitHub package.json version (branch)" src="https://img.shields.io/github/package-json/v/olegscout/react-native/dev?label=Beta&style=flat-square"> |
 ||
 |---|
 |<img alt="GitHub last commit (branch)" src="https://img.shields.io/github/last-commit/olegscout/react-native/dev"> |
