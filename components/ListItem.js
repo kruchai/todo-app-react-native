@@ -1,23 +1,29 @@
-import React, {useState} from 'react'
+import { useState } from 'react'
 import {StyleSheet, Text, TouchableHighlight} from 'react-native'
 
-export const ListItem = ({item, deleteHandler}) => {
+export const ListItem = ({ item, deleteHandler }) => {
   return (
-    <TouchableHighlight onPress={() => deleteHandler(item.key)}>
-      <Text style={styles.text}>{item.text}</Text>
+    <TouchableHighlight
+      style={styles.todoListWrapper}
+      onPress={() => deleteHandler(item.id)}
+    >
+      <Text style={styles.title}>{item.title}</Text>
     </TouchableHighlight>
   )
 }
 
 const styles = StyleSheet.create({
-  text: {
-    padding: 20,
-    textAlign: 'center',
-    borderRadius: 5,
-    backgroundColor: '#fafafa',
+  todoListWrapper: {
     borderWidth: 1,
-    borderStyle: solid,
-    marginTop: 20,
-    width: '60%',
+    borderColor: '#ccc',
+    borderStyle: 'solid',
+    borderRadius: 12,
+    paddingLeft: 15,
+    paddingRight: 15,
+    minHeight: 50,
+  },
+  title: {
+    textAlign: 'center',
+    backgroundColor: '#fafafa',
   }
 })
