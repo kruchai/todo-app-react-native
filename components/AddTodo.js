@@ -1,34 +1,37 @@
-import React, {useState} from 'react'
-import {Dimensions, StyleSheet, View, Text, TextInput, TouchableOpacity, Platform, Alert} from 'react-native'
+import { useState } from 'react'
+import { Dimensions, StyleSheet, View, Text, TextInput, TouchableOpacity, Platform, Alert } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
 
-export const AddTodo = ({ onSubmit }) => {
-  const [value, setValue] = useState('')
+export const AddTodo = ({ addHandler }) => {
+  const [title, setValue] = useState('')
   
-  const pressHandler = () => {
-    if (value.trim()) {
-      onSubmit(value)
-      setValue('')
+  const onChangeHandler = (title) => {
+    setValue(title)
+  }
+
+  const onPressHandler = () => {
+    if (title.trim()) {
+      addHandler(title)
     } else {
       Alert.alert('The message cannot be empty')
     }
   }
-  
+
   return (
     <View style={styles.todoWrapper}>
       <TextInput
         style={styles.input}
-        onChangeText={text => setValue(text)}
-        value={value}
+        onChangeText={onChangeHandler}
+        value={title}
         placeholder='Input the new deal'
         autoCorrect={false}
         autoCapitalize='none'
       />
       <TouchableOpacity
         style={styles.cta}
-        onPress={pressHandler}
+        onPress={onPressHandler}
       >
         <Text style={styles.ctaText}>{'+'}</Text>
       </TouchableOpacity>
