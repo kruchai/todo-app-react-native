@@ -14,6 +14,7 @@ export const AddTodo = ({ addHandler }) => {
   const onPressHandler = () => {
     if (title.trim()) {
       addHandler(title)
+      setValue('')
     } else {
       Alert.alert('The message cannot be empty')
     }
@@ -33,7 +34,7 @@ export const AddTodo = ({ addHandler }) => {
         style={styles.cta}
         onPress={onPressHandler}
       >
-        <Text style={styles.ctaText}>{'+'}</Text>
+        <Text style={styles.ctaText}>{'➕'}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -58,11 +59,11 @@ const styles = StyleSheet.create({
   cta: {
     width: 50,
     height: 50,
-    backgroundColor: 'green',
+    backgroundColor: '#bbd8b7',
     color: '#fff',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: 'green',
+    borderColor: '#bbd8b7',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12,
