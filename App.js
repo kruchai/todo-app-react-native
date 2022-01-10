@@ -1,43 +1,45 @@
-import React, {useState} from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { Platform, StyleSheet, SafeAreaView, Text, View } from 'react-native'
+import { useState } from 'react'
+import { Platform, StyleSheet, SafeAreaView, Text, View, FlatList } from 'react-native'
 import { Header } from './components/Header'
 import { AddTodo } from './components/AddTodo'
-import { TodoList } from './components/TodoList'
+import { ListItem } from './components/ListItem'
 
 export default function App() {
   const [todos, setTodos] = useState([
-    { id: 1, title: 'xxx'},
-    { id: 2, title: 'xxx'},
-    { id: 3, title: 'xxx'},
-    { id: 4, title: 'xxx'},
+    { id: 1, title: 'xxx1'},
+    { id: 2, title: 'xxx2'},
+    { id: 3, title: 'xxx3'},
+    { id: 4, title: 'xxx4'},
   ])
 
-  const addTodo = title => {
-    setTodos(previousTodo => [
+  const addTodo = (title) => {
+    setTodos((list) => [
       {
         id: Date.now().toString(),
         title
       },
-      ...previousTodo
+      ...list
     ])
+  }
+  
+  const deleteTodo = (id) => {
+    setTodos((list) => {
+      return list.filter(todos => todos.id != id)
+    })
   }
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <Header />
-        <AddTodo onSubmit={addTodo} />
-
-        <View>
-          {todos.map(todo => {
-            return (
-              // <TodoList title={todo.title} key={todo.id} />
-              <Text key={todo.id}>{todo.title}</Text>
-            )
-          })}
+        <View style={styles.headerWrapper}>
+          <Header />
+          <AddTodo addHandler={addTodo} />
         </View>
-        <StatusBar style="auto" />
+        <View style={styles.mainWrapper}>
+          <FlatList data={todos} renderItem={({ item }) => (
+            <ListItem item={item} deleteHandler={deleteTodo} />
+          )} />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -53,4 +55,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
   },
+  headerWrapper: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainWrapper: {
+    width: '100%',
+  }
 });
